@@ -1,21 +1,12 @@
 import { authGuard } from '@bcwdev/auth0provider-client'
 import type { RouterConfig } from '@nuxt/schema'
 import { AppState } from '../AppState.js'
-import { AuthService } from '../services/AuthService'
+import { AuthService } from '../services/AuthService.js'
 
 function loadPage(page) {
   return () => import(`~/pages/${page}.vue`)
 }
 
-// FIXME need router guard and settled
-function falseGuard() {
-  let user = AppState.user
-  if (!user.isAuthenticated) {
-
-    const router = useRouter()
-    router.push('/')
-  }
-}
 
 // https://router.vuejs.org/api/interfaces/routeroptions.html
 export default <RouterConfig>{
@@ -26,6 +17,19 @@ export default <RouterConfig>{
       component: loadPage('home')
     },
     {
+      name: 'about',
+      path: '/about',
+      component: loadPage('About'),
+      meta: {
+        middleware: 'auth-guard'
+      }
+    },
+    {
+      name: 'login',
+      path: '/login',
+      component: loadPage('LoginPage')
+    },
+    {
       name: 'profile',
       path: '/profiles/:profileId',
       component: loadPage('profile')
@@ -34,7 +38,10 @@ export default <RouterConfig>{
       name: 'account',
       path: '/account',
       component: loadPage('Account'),
-      beforeEnter: falseGuard
+      meta: {
+        middleware: 'auth-guard'
+      }
+      // beforeEnter: falseGuard
     }
   ],
 }

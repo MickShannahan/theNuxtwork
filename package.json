@@ -20,6 +20,7 @@
     "@popperjs/core": "^2.11.8",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "dotenv": "^16.3.1",
     "es-cookie": "^1.4.0",
     "sass": "^1.63.6",
     "vite": "^4.4.4"

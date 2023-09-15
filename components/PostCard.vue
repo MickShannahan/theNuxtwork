@@ -13,7 +13,9 @@
         </NuxtLink>
 
         <!-- FIXME need to bring in mdi -->
-        <div @click="like"><i v-if="!liked" class="mdi mdi-heart">🖤</i> <i v-else>💙</i>{{ post.likes.length }}</div>
+        <div @click="like">
+          <i v-if="!liked" class="mdi mdi-heart-outline"></i><i v-else class="mdi mdi-heart"></i>{{ post.likes.length }}
+        </div>
       </section>
       <p class="p-3">{{ post.body }}</p>
       <div class="text-end p-1">

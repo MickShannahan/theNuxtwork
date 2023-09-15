@@ -1,3 +1,4 @@
+import { logger } from '../utils/Logger.js'
 import { AppState } from '../AppState.js'
 import { api } from './AxiosService.js'
 

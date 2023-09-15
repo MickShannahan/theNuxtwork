@@ -6,6 +6,12 @@ export default defineNuxtConfig({
   // @ts-ignore
   script: [{ src: 'bootstrap/dist/js/bootstrap.bundle.min.js' }],
   vite: { vue: { customElement: true } },
-  router: {
+  modules: ['@nuxt/devtools'],
+  runtimeConfig: {
+    public: {
+      authDomain: process.env.AUTH_DOMAIN,
+      authClientId: process.env.AUTH_CLIENT_ID,
+      authAudience: process.env.AUTH_AUDIENCE
+    }
   }
 })
